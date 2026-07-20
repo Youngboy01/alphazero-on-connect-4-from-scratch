@@ -15,8 +15,14 @@ def make_empty_board():
     return arr
     pass
 
-# Step 2 - column_top_row (not yet solved)
-# TODO: implement
+# Step 2 - column_top_row
+def column_top_row(board, column):
+    """Return the lowest empty row in `column`, or -1 if the column is full."""
+    n = len(board)
+    for row in range(n-1, -1, -1):
+        if board[row][column]==0:
+            return row
+    return -1
 
 # Step 3 - drop_piece (not yet solved)
 # TODO: implement

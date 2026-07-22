@@ -42,8 +42,16 @@ def column_full(board, column):
     return column_top_row(board,column)==-1
     pass
 
-# Step 5 - valid_moves (not yet solved)
-# TODO: implement
+# Step 5 - valid_moves
+def valid_moves(board):
+    arr=[]
+    m = len(board[0])
+    for i in range(m):
+        if not column_full(board, i):
+            arr.append(i)
+    return arr
+
+    pass
 
 # Step 6 - four_in_a_row_horizontal (not yet solved)
 # TODO: implement

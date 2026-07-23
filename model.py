@@ -82,8 +82,17 @@ def four_in_a_row_diagonal_down_right(board):
     return 0
     pass
 
-# Step 9 - four_in_a_row_diagonal_up_right (not yet solved)
-# TODO: implement
+# Step 9 - four_in_a_row_diagonal_up_right
+def four_in_a_row_diagonal_up_right(board):
+    m,n = board.shape
+    for row in range(3,m):
+        for col in range(n-3):
+            if board[row][col]!=0 and board[row][col]==board[row-1][col+1]==board[row-2][col+2]==board[row-3][col+3]:
+                return board[row][col]
+    return 0
+
+
+    pass
 
 # Step 10 - check_winner (not yet solved)
 # TODO: implement

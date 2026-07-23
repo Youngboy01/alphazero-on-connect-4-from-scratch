@@ -94,8 +94,17 @@ def four_in_a_row_diagonal_up_right(board):
 
     pass
 
-# Step 10 - check_winner (not yet solved)
-# TODO: implement
+# Step 10 - check_winner
+import numpy as np
+
+def check_winner(board):
+    """Return 1 or 2 if that player has four in a row, else 0."""
+    for method in (four_in_a_row_diagonal_down_right, four_in_a_row_diagonal_up_right,four_in_a_row_horizontal,four_in_a_row_vertical):
+        winner = method(board)
+        if winner:
+            return winner
+    return 0
+    pass
 
 # Step 11 - board_is_full (not yet solved)
 # TODO: implement

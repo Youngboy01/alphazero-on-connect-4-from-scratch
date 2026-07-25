@@ -104,7 +104,7 @@ def check_winner(board):
     for method in (four_in_a_row_diagonal_down_right, four_in_a_row_diagonal_up_right,four_in_a_row_horizontal,four_in_a_row_vertical):
         winner = method(board)
         if winner:
-            return winner
+            return int(winner)
     return 0
     pass
 
@@ -113,8 +113,14 @@ def board_is_full(board):
     return len(valid_moves(board))==0
     pass
 
-# Step 12 - is_terminal (not yet solved)
-# TODO: implement
+# Step 12 - is_terminal
+def is_terminal(board):
+    winner  =  check_winner(board)
+    if winner!=0:
+        return (True,winner)
+    if board_is_full(board):
+        return (True,0)
+    return (False,0)
 
 # Step 13 - other_player (not yet solved)
 # TODO: implement

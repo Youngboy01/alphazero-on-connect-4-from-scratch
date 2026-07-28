@@ -145,8 +145,12 @@ def encode_board(board, current_player):
 
     return np.stack((current_board,opponent_board))
 
-# Step 16 - board_to_torch_tensor (not yet solved)
-# TODO: implement
+# Step 16 - board_to_torch_tensor
+import torch
+def board_to_torch_tensor(board, current_player):
+    encoded = encode_board(board,current_player)
+    tf = torch.from_numpy(encoded)
+    return tf.unsqueeze(0)
 
 # Step 17 - init_conv_backbone (not yet solved)
 # TODO: implement

@@ -313,8 +313,15 @@ def node_q_value(node):
         return 0.0
     return node["value_sum"] / node["visit_count"]
 
-# Step 29 - ucb_score (not yet solved)
-# TODO: implement
+# Step 29 - ucb_score
+import math
+
+def ucb_score(parent, child, c_puct=1.5):
+    Q_child = node_q_value(child)
+
+    exploration = c_puct*child["prior"]*(math.sqrt(parent["visit_count"])/ (1+child["visit_count"]))
+
+    return float(Q_child+exploration)
 
 # Step 30 - select_best_child (not yet solved)
 # TODO: implement

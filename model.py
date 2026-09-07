@@ -323,8 +323,23 @@ def ucb_score(parent, child, c_puct=1.5):
 
     return float(Q_child+exploration)
 
-# Step 30 - select_best_child (not yet solved)
-# TODO: implement
+# Step 30 - select_best_child
+def select_best_child(node, legal_actions, c_puct=1.5):
+    best_child = None
+    best_score = float("-inf")
+    best_action = None
+    for action in legal_actions:
+        if action not in node["children"]:
+            continue
+
+        child  = node["children"][action]
+        score = ucb_score(node,child,c_puct)
+
+        if score>best_score:
+            best_action = action
+            best_score = score
+            best_child = child
+    return best_action,best_child
 
 # Step 31 - select_leaf (not yet solved)
 # TODO: implement

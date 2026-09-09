@@ -381,8 +381,16 @@ def expand_node(node, priors):
     node["children"] = children
     node["is_expanded"] = True
 
-# Step 34 - backup_value (not yet solved)
-# TODO: implement
+# Step 34 - backup_value
+def backup_value(leaf, value):
+    node = leaf
+    current_value = value
+
+    while node is not None:
+        node["visit_count"] +=1
+        node["value_sum"] += current_value
+        current_value = -current_value
+        node = node["parent"]
 
 # Step 35 - run_one_simulation (not yet solved)
 # TODO: implement

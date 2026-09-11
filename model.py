@@ -446,8 +446,16 @@ def visit_count_policy(root, temperature=1.0):
     policy = scaled_visits / scaled_visits.sum()
     return policy
 
-# Step 38 - mcts_choose_action (not yet solved)
-# TODO: implement
+# Step 38 - mcts_choose_action
+def mcts_choose_action(state, to_play, net, num_simulations, c_puct, temperature=1.0):
+    root = run_mcts(state, to_play, net, num_simulations, c_puct)
+    policy = visit_count_policy(root, temperature)
+    probs = torch.tensor(policy, dtype=torch.float32)
+    action = torch.multinomial(
+        probs,
+        num_samples=1
+    ).item()
+    return int(action), policy
 
 # Step 39 - record_self_play_step (not yet solved)
 # TODO: implement

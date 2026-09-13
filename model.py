@@ -499,8 +499,14 @@ def assign_value_targets(history, winner):
         valued_history.append(new_step)
     return valued_history
 
-# Step 42 - generate_self_play_batch (not yet solved)
-# TODO: implement
+# Step 42 - generate_self_play_batch
+def generate_self_play_batch(net, num_games, num_simulations, c_puct, temperature=1.0):
+    buffer = []
+    for _ in range(num_games):
+        history, winner= play_self_play_game(net, num_simulations,c_puct,temperature)
+        valued_history = assign_value_targets(history,winner)
+        buffer.extend(valued_history)
+    return buffer
 
 # Step 43 - value_loss_mse (not yet solved)
 # TODO: implement
